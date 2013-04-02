@@ -11,9 +11,17 @@
 <meta name="language" content="en"/>
 
 <category>
-<pattern>* HAUKUR *</pattern>
+<pattern>_ COMPUTER _</pattern>
 <template>
-Haukur is a great man.
+Is something wrong with your computer?
+</template>
+</category>
+
+<category>
+<pattern>YES</pattern>
+<that>IS SOMETHING WRONG WITH YOUR COMPUTER</that>
+<template>
+What is wrong with it?
 </template>
 </category>
 
