@@ -10,11 +10,19 @@
 <meta name="author" content="Thomas Ringate"/>
 <meta name="language" content="en"/>
 
+
+<category>
+	<pattern>KEYBOARD</pattern>
+	<template>
+	<think><set name="topic">KBRD</set></think>	
+	Can you describe the problem?
+	</template>
+</category>
+
 <category>
 	<pattern>COMPUTER BROKEN</pattern>
 	<template>
-	<think><set name="topic">CPTR</set></think>	
-	Can you describe the problem?
+	Can you describe the problem with your computer?
 	</template>
 </category>
 
@@ -53,41 +61,44 @@
 	</template>
 </category>
 
-<topic name="CPTR">
+
 <category>
-<pattern>FREEZE</pattern>
-<that>CAN YOU DESCRIBE THE PROBLEM</that>
-<template>
-Have you tried turning it off and on again?
-<think><set name="topic">FREEZE</set></think>
-</template>
+	<pattern>*</pattern>
+	<template>
+	I do not understand your problem, please be more specific.
+	<think><set name="topic">CPTR</set></think>
+	</template>
 </category>
 
 <category>
-<pattern>_ FREEZES _</pattern>
-<that>CAN YOU DESCRIBE THE PROBLEM</that>
-<template>
-<srai>FREEZE</srai>
-</template>
+	<pattern>FREEZE</pattern>
+	<template>
+	Have you tried turning it off and on again?
+	<think><set name="topic">FREEZE</set></think>
+	</template>
 </category>
 
 <category>
-<pattern>_ FROZEN _</pattern>
-<that>CAN YOU DESCRIBE THE PROBLEM</that>
-<template>
-<srai>FREEZE</srai>
-</template>
+	<pattern>_ FREEZES _</pattern>
+	<template>
+	<srai>FREEZE</srai>
+	</template>
 </category>
 
 <category>
-<pattern>_ FREEZE _</pattern>
-<that>CAN YOU DESCRIBE THE PROBLEM</that>
-<template>
-<srai>FREEZE</srai>
-</template>
+	<pattern>_ FROZEN _</pattern>
+	<template>
+	<srai>FREEZE</srai>
+	</template>
 </category>
 
-</topic>
+<category>
+	<pattern>_ FREEZE _</pattern>
+	<template>
+	<srai>FREEZE</srai>
+	</template>
+</category>
+
 
 <topic name="FREEZE">
 	<category>
@@ -129,7 +140,7 @@ Have you tried turning it off and on again?
 		<pattern>SPECIFIC PROGRAM</pattern>
 		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
 		<template><srai>SPECIFIC</srai></template>
-	</category>
+		</category>
 
 	<category>
 		<pattern>RANDOM</pattern>
@@ -137,6 +148,15 @@ Have you tried turning it off and on again?
 		<template>
 		Sounds like a problem with the OS. Make sure to scan your computer for viruses.
 		If that does not fix the problem then this could be hardware related.
+		</template>
+	</category>
+
+	<category>
+		<pattern>*</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+			<think><set name="topic">FREEZE</set></think>
+			Does it freeze at random times or when running a specific program? 
 		</template>
 	</category>
 
