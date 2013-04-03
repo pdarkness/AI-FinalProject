@@ -38,5 +38,6 @@ while not brainLoaded:
 
 # Enter the main input/output loop.
 print "\nINTERACTIVE MODE (ctrl-c to exit)"
+print "Hello, I am the Tech service bot, how can i help you?"
 while(True):
 	print kern.respond(raw_input("> "))
