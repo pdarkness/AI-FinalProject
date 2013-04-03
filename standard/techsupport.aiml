@@ -19,6 +19,17 @@
 	</template>
 </category>
 
+
+<!-- Non-standard problems. -->
+<category>
+	<pattern>*</pattern>
+	<template>
+	I do not understand your problem, please be more specific.
+	<think><set name="topic">CPTR</set></think>
+	</template>
+</category>
+
+<!-- My computer is broken/not working -->
 <category>
 	<pattern>COMPUTER BROKEN</pattern>
 	<template>
@@ -62,14 +73,7 @@
 </category>
 
 
-<category>
-	<pattern>*</pattern>
-	<template>
-	I do not understand your problem, please be more specific.
-	<think><set name="topic">CPTR</set></think>
-	</template>
-</category>
-
+<!-- My computer freezes -->
 <category>
 	<pattern>FREEZE</pattern>
 	<template>
@@ -98,7 +102,6 @@
 	<srai>FREEZE</srai>
 	</template>
 </category>
-
 
 <topic name="FREEZE">
 	<category>
@@ -129,6 +132,13 @@
 	</category>	
 
 	<category>
+		<pattern>*</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>Have you tried turning it off and on again?</template>
+		<think><set name="topic">FREEZE</set></think>	
+	</category>	
+
+	<category>
 		<pattern>SPECIFIC</pattern>
 		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
 		<template>
@@ -152,11 +162,51 @@
 	</category>
 
 	<category>
+		<pattern>_RANDOM</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+		<srai>RANDOM</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>RANDOM_</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+		<srai>RANDOM</srai>
+		</template>
+	</category>
+
+	<category>
 		<pattern>*</pattern>
 		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
 		<template>
 			<think><set name="topic">FREEZE</set></think>
 			Does it freeze at random times or when running a specific program? 
+		</template>
+	</category>
+
+	<category>
+		<pattern>STARTUP</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+			Sound like an OS or hardware problem. You should contact a specialist. 
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ STARTUP</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+			<srai>STARTUP</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>STARTUP _</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+			<srai>STARTUP</srai>
 		</template>
 	</category>
 
@@ -168,6 +218,100 @@
 		You should check <star/>'s website for troubleshooting or see if there are new versions of <star/>.
 		</template>
 	</category>
+	
+	<category>
+		<pattern>WHEN I AM RUNNING *</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+		This seems to be a software problem.
+		You should check <star/>'s website for troubleshooting or see if there are new versions of <star/>.
+		</template>
+	</category>
 </topic>
 
+
+<!-- My computer wont start -->
+<category>
+	<pattern>NOT START</pattern>
+	<template>
+	Have you tried turning it off and on again?
+	<think><set name="topic">BOOT PROBLEM</set></think>
+	</template>
+</category>
+
+<category>
+	<pattern>_ WONT START</pattern>
+	<template>
+    <srai>NOT START</srai>
+	</template>
+</category>
+
+
+<category>
+	<pattern>_ WONT BOOT</pattern>
+	<template>
+    <srai>NOT START</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>_ BOOT PROBLEM</pattern>
+	<template>
+    <srai>NOT START</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>_ NOT BOOTING</pattern>
+	<template>
+    <srai>NOT START</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>_ COMPUTER NOT START</pattern>
+	<template>
+    <srai>NOT START</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>_ COMPUTER NOT STARTING</pattern>
+	<template>
+    <srai>NOT START</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>_ NOT BOOT</pattern>
+	<template>
+    <srai>NOT START</srai>
+	</template>
+</category>
+
+<topic name="BOOT PROBLEM">
+	<category>
+		<pattern>YES</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>
+			Sound like an OS or hardware problem. You should contact a specialist. 
+		</template>
+	</category>
+
+	<category>
+		<pattern>NO</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>
+			Try it, maybe it will work. 
+		</template>
+	</category>
+	
+	<category>
+		<pattern>*</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>
+			Have you tried turning it off and on again? 
+		</template>
+	</category>
+</topic>
 </aiml>
