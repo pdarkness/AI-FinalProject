@@ -9,47 +9,145 @@
 
 <meta name="author" content="Thomas Ringate"/>
 <meta name="language" content="en"/>
+
 <category>
-<pattern>_ COMPUTER _</pattern>
-<template>
-Is something wrong with your computer?
-</template>
+	<pattern>COMPUTER BROKEN</pattern>
+	<template>
+	<think><set name="topic">CPTR</set></think>	
+	Can you describe the problem?
+	</template>
 </category>
 
 <category>
-<pattern>YES</pattern>
-<that>IS SOMETHING WRONG WITH YOUR COMPUTER</that>
-<template>
-What is wrong with it?
-</template>
+	<pattern>MY COMPUTER IS BROKEN</pattern>
+	<template>
+	<srai>COMPUTER BROKEN</srai>
+	</template>
 </category>
 
 <category>
-<pattern>_ FREEZE _</pattern>
-<that>WHAT IS WRONG WITH IT</that>
+	<pattern>_ COMPUTER _ BROKEN</pattern>
+	<template>
+	<srai>COMPUTER BROKEN</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>_ COMPUTER _ NOT WORKING</pattern>
+	<template>
+	<srai>COMPUTER BROKEN</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>_ PROBLEM _ COMPUTER</pattern>
+	<template>
+	<srai>COMPUTER BROKEN</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>COMPUTER _ PROBLEM _</pattern>
+	<template>
+	<srai>COMPUTER BROKEN</srai>
+	</template>
+</category>
+
+<topic name="CPTR">
+<category>
+<pattern>FREEZE</pattern>
+<that>CAN YOU DESCRIBE THE PROBLEM</that>
 <template>
 Have you tried turning it off and on again?
 <think><set name="topic">FREEZE</set></think>
 </template>
 </category>
 
-<topic name="FREEZE">
-
 <category>
-<pattern>NO</pattern>
-<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+<pattern>_ FREEZES _</pattern>
+<that>CAN YOU DESCRIBE THE PROBLEM</that>
 <template>
-Maybe it will work, try it
+<srai>FREEZE</srai>
 </template>
 </category>
 
 <category>
-<pattern>YES</pattern>
-<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+<pattern>_ FROZEN _</pattern>
+<that>CAN YOU DESCRIBE THE PROBLEM</that>
 <template>
-Does it freeze at random times or when running a specific program?
+<srai>FREEZE</srai>
 </template>
-</category>	
+</category>
+
+<category>
+<pattern>_ FREEZE _</pattern>
+<that>CAN YOU DESCRIBE THE PROBLEM</that>
+<template>
+<srai>FREEZE</srai>
+</template>
+</category>
+
+</topic>
+
+<topic name="FREEZE">
+	<category>
+		<pattern>NO</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>
+		Maybe it will fix the problem, try it
+		</template>
+	</category>
+
+	<category>
+		<pattern>YES</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>Does it freeze at random times or when running a specific program?</template>
+		<think><set name="topic">FREEZE</set></think>
+	</category>	
+	
+	<category>
+		<pattern>YES _</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template><srai>YES</srai></template>
+	</category>	
+
+	<category>
+		<pattern>NO _</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template><srai>NO</srai></template>
+	</category>	
+
+	<category>
+		<pattern>SPECIFIC</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+		What program is it?
+		</template>
+	</category>
+
+	<category>
+		<pattern>SPECIFIC PROGRAM</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template><srai>SPECIFIC</srai></template>
+	</category>
+
+	<category>
+		<pattern>RANDOM</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+		Sounds like a problem with the OS. Make sure to scan your computer for viruses.
+		If that does not fix the problem then this could be hardware related.
+		</template>
+	</category>
+
+	<category>
+		<pattern>*</pattern>
+		<that>WHAT PROGRAM IS IT</that>
+		<template>
+		This seems to be a software problem.
+		You should check <star/>'s website for troubleshooting or see if there are new versions of <star/>.
+		</template>
+	</category>
 </topic>
 
 </aiml>
