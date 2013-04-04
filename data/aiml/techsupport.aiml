@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<aiml version="1.0">
+
+<!-- Free software (c) 2001 ALICE AI Foundation -->
+<!-- This program is open source code released under -->
+<!-- the terms of the GNU General Public License -->
+<!-- as published by the Free Software Foundation. -->
+
+<meta name="author" content="Thomas Ringate"/>
+<meta name="language" content="en"/>
+
+<!-- My computer is broken/not working -->
+<topic name="COMPUTER IS BROKEN">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Can you describe the problem with your computer?
+	<think><set name="topic"></set></think>
+	</template>
+</category>
+</topic>
+	
+<!-- My computer freezes -->
+<topic name="COMPUTER FREEZES">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Have you tried turning it off and on again?
+	<think><set name="topic">FREEZE</set></think>
+	</template>
+</category>
+</topic>
+
+<!-- My computer wont start -->
+<topic name="COMPUTER WONT START">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Have you tried turning it off and on again?
+	<think><set name="topic">BOOT PROBLEM</set></think>
+	</template>
+</category>
+</topic>
+
+<!-- My computer gets a bluescreen -->
+<topic name="BLUESCREEN">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Bluescreen? Check the error code and look it up on 
+	http://pcsupport.about.com/od/findbyerrormessage/tp/stop_error_list_0x1_0x5f.htm 
+	<think><set name="topic">BOOT PROBLEM</set></think>
+	</template>
+</category>
+</topic>
+<!-- My computer has no sound -->
+<topic name="NOSOUND">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Are you sure the speakers are connected?
+	<think><set name="topic">SOUNDPROBLEM</set></think>
+	</template>
+</category>
+</topic>
+
+
+
+
+
+<!-- Subnodes -->
+
+<!-- My computer freezes -->
+<topic name="FREEZE">
+	<category>
+		<pattern>NO</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>
+		Maybe it will fix the problem, try it
+		</template>
+	</category>
+	
+	<category>
+		<pattern>I HAVE TURNED IT OFF AND ON AGAIN</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>Does it freeze at random times or when running a specific program?</template>
+		<think><set name="topic">FREEZE</set></think>
+	</category>	
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>Does it freeze at random times or when running a specific program?</template>
+		<think><set name="topic">FREEZE</set></think>
+	</category>	
+	
+	<category>
+		<pattern>YES _</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template><srai>YES</srai></template>
+	</category>	
+
+	<category>
+		<pattern>NO _</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template><srai>NO</srai></template>
+	</category>	
+
+	<category>
+		<pattern>SPECIFIC</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+		What program is it?
+		</template>
+	</category>
+
+	<category>
+		<pattern>SPECIFIC PROGRAM</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template><srai>SPECIFIC</srai></template>
+		</category>
+
+	<category>
+		<pattern>RANDOM</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+		Sounds like a problem with the OS. Make sure to scan your computer for viruses.
+		If that does not fix the problem then this could be hardware related.
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ RANDOM</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+		<srai>RANDOM</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>RANDOM _</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+		<srai>RANDOM</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>*</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+			<think><set name="topic">FREEZE</set></think>
+			Does it freeze at random times or when running a specific program? 
+		</template>
+	</category>
+
+	<category>
+		<pattern>STARTUP</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+			Sound like an OS or hardware problem. You should contact a specialist. 
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ STARTUP</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+			<srai>STARTUP</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ BOOT _</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+			<srai>STARTUP</srai>
+		</template>
+	</category>
+	
+	<category>
+		<pattern>_ START _</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+			<srai>STARTUP</srai>
+		</template>
+	</category>
+	
+	<category>
+		<pattern>STARTUP _</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+			<srai>STARTUP</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>*</pattern>
+		<that>WHAT PROGRAM IS IT</that>
+		<template>
+		This seems to be a software problem.
+		You should check <star/>'s website for troubleshooting or see if there are new versions of <star/>.
+		</template>
+	</category>
+	
+	<category>
+		<pattern>WHEN _ RUNNING *</pattern>
+		<that>DOES IT FREEZE AT RANDOM TIMES OR WHEN RUNNING A SPECIFIC PROGRAM</that>
+		<template>
+		This seems to be a software problem.
+		You should check <star/>'s website for troubleshooting or see if there are new versions of <star/>.
+		</template>
+	</category>
+</topic>
+
+
+<!-- My computer wont start -->
+<topic name="BOOT PROBLEM">
+	<category>
+		<pattern>YES</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>
+			Sound like an OS or hardware problem. You should contact a specialist. 
+		</template>
+	</category>
+
+	<category>
+		<pattern>NO</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>
+			Try it, maybe it will work. 
+		</template>
+	</category>
+	
+	<category>
+		<pattern>*</pattern>
+		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
+		<template>
+			Have you tried turning it off and on again? 
+		</template>
+	</category>
+</topic>
+
+<!-- My computer has no sound -->
+<topic name="SOUNDPROBLEM">
+	<category>
+		<pattern>YES</pattern>
+		<that>ARE YOU SURE THE SPEAKERS ARE CONNECTED</that>
+		<template>
+			Check your sound volume. Is your computer set on mute?
+            <think><set name="topic">SOUNDPROBLEM</set></think>			
+		</template>
+	</category>
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>CHECK YOUR SOUND VOLUME IS YOUR COMPUTER SET ON MUTE</that>
+		<template>
+			Well there is your problem. Try pumping up the volume. Did it fix it?
+		</template>
+		<think><set name="topic">SOUNDPROBLEM</set></think>
+	</category>
+</topic>
+
+</aiml>
