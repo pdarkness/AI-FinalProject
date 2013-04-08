@@ -7,8 +7,22 @@
 <!-- the terms of the GNU General Public License -->
 <!-- as published by the Free Software Foundation. -->
 
-<meta name="author" content="Thomas Ringate"/>
+<meta name="author" content="Haukur Rosinkranz and Knutur Oli Magnusson"/>
 <meta name="language" content="en"/>
+
+<category>
+	<pattern>YES _</pattern>
+	<template>
+	<srai>YES</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>NO _</pattern>
+	<template>
+	<srai>NO</srai>
+	</template>
+</category>
 
 <!-- My computer is broken/not working -->
 <topic name="COMPUTER IS BROKEN">
@@ -51,7 +65,7 @@
 	Bluescreen? Check the error code and look it up on 
 	http://pcsupport.about.com/od/findbyerrormessage/tp/stop_error_list_0x1_0x5f.htm 
 	<think><set name="topic">BOOT PROBLEM</set></think>
-	</template>
+	</template	>
 </category>
 </topic>
 <!-- My computer has no sound -->
@@ -65,11 +79,83 @@
 </category>
 </topic>
 
+<!-- My computer cannot play video -->
+<topic name="NOVIDEO">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Do you have all necessary codecs installed?
+	<think><set name="topic">VIDEOPROBLEM</set></think>
+	</template>
+</category>
+</topic>
+
+
+<!-- My keyboard does not work -->
+<topic name="KEYBOARD">
+	<category>
+		<pattern>*</pattern>
+		<template>
+		Check your cables, is your keyboard connected in the USB?
+		<think><set name="topic">KEYBPROBLEM</set></think>
+		</template>
+	</category>
+</topic>
+
+<topic name="MOUSE">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Check your cables, is your mouse connected in the USB?
+	<think><set name="topic">MOUSEPROBLEM</set></think>
+	</template>
+</category>
+</topic>
+
+<topic name="PRINTER">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Check your cables, is your printer connected in the USB?
+	<think><set name="topic">PRINTERPROBLEM</set></think>
+	</template>
+</category>
+</topic>
+
+<topic name="SCREEN SCRAMBLED">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Check your cables, are they properly connected? 
+	<think><set name="topic">SCREENSCRAMBLEPROBLEM</set></think>
+	</template>
+</category>
+</topic>
+
+<topic name="SCREEN BLANK">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Check your cables, are they properly connected? 
+	<think><set name="topic">SCREENBLANKPROBLEM</set></think>
+	</template>
+</category>
+</topic>
 
 
 
+<topic name="INTERNET BROKEN">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Check your cables, are they properly connected? 
+	<think><set name="topic">INTERNETPROBLEM</set></think>
+	</template>
+</category>
+</topic>
 
 <!-- Subnodes -->
+
 
 <!-- My computer freezes -->
 <topic name="FREEZE">
@@ -80,31 +166,12 @@
 		Maybe it will fix the problem, try it
 		</template>
 	</category>
-	
-	<category>
-		<pattern>I HAVE TURNED IT OFF AND ON AGAIN</pattern>
-		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
-		<template>Does it freeze at random times or when running a specific program?</template>
-		<think><set name="topic">FREEZE</set></think>
-	</category>	
-	
+
 	<category>
 		<pattern>YES</pattern>
 		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
 		<template>Does it freeze at random times or when running a specific program?</template>
 		<think><set name="topic">FREEZE</set></think>
-	</category>	
-	
-	<category>
-		<pattern>YES _</pattern>
-		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
-		<template><srai>YES</srai></template>
-	</category>	
-
-	<category>
-		<pattern>NO _</pattern>
-		<that>HAVE YOU TRIED TURNING IT OFF AND ON AGAIN</that>
-		<template><srai>NO</srai></template>
 	</category>	
 
 	<category>
@@ -251,16 +318,328 @@
 			Check your sound volume. Is your computer set on mute?
             <think><set name="topic">SOUNDPROBLEM</set></think>			
 		</template>
+	</category> 
+    <category>
+		<pattern>NO</pattern>
+		<that>ARE YOU SURE THE SPEAKERS ARE CONNECTED</that>
+		<template>
+			Connect your speakers and see if it fixes your problem.	
+		</template>
 	</category>
 	
 	<category>
 		<pattern>YES</pattern>
 		<that>CHECK YOUR SOUND VOLUME IS YOUR COMPUTER SET ON MUTE</that>
 		<template>
-			Well there is your problem. Try pumping up the volume. Did it fix it?
+			Well there is your problem. Try pumping up the volume.
 		</template>
 		<think><set name="topic">SOUNDPROBLEM</set></think>
 	</category>
+
+	<category>
+		<pattern>NO</pattern>
+		<that>CHECK YOUR SOUND VOLUME IS YOUR COMPUTER SET ON MUTE</that>
+		<template>
+			Could be a problem with your sound card. Check out the soundcards manufacturers website and update your drivers.
+            If that does not work you should contact a specialist.
+		</template>
+	</category>
 </topic>
 
+
+<topic name="VIDEOPROBLEM">
+	<category>
+		<pattern>NO</pattern>
+		<that>DO YOU HAVE ALL NECESSARY CODECS INSTALLED</that>
+		<template>
+			Check your file for what codec it needs and find where to download it on google.
+			You can also try installing VLC player that plays almost every video file.
+            <think><set name="topic">SOUNDPROBLEM</set></think>			
+		</template>
+	</category>
+
+	<category>
+		<pattern>DONT KNOW</pattern>
+		<that>DO YOU HAVE ALL NECESSARY CODECS INSTALLED</that>
+		<template>
+			Codecs are necessary to play compressed video files in your computer.
+			The simplest solution would be to download VLC player as it plays almost every file.			
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ DONT KNOW</pattern>
+		<that>DO YOU HAVE ALL NECESSARY CODECS INSTALLED</that>
+		<template>
+			<srai>DONT KNOW</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>WHAT _</pattern>
+		<that>DO YOU HAVE ALL NECESSARY CODECS INSTALLED</that>
+		<template>
+			<srai>DONT KNOW</srai>
+		</template>
+	</category>
+	
+	<category>
+		<pattern>_ DONT KNOW _</pattern>
+		<that>DO YOU HAVE ALL NECESSARY CODECS INSTALLED</that>
+		<template>
+			<srai>DONT KNOW</srai>
+		</template>
+	</category>
+	
+	<category>
+		<pattern>_ IDEA</pattern>
+		<that>DO YOU HAVE ALL NECESSARY CODECS INSTALLED</that>
+		<template>
+			<srai>DONT KNOW</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>YES</pattern>
+		<that>DO YOU HAVE ALL NECESSARY CODECS INSTALLED</that>
+		<template>
+			Maybe it is your video card. Check your drivers and update them if necessary.
+			If that doesn't fix it then this could be hardware related so contact a specialist.
+            <think><set name="topic">SOUNDPROBLEM</set></think>			
+		</template>
+	</category>
+</topic>
+
+<!-- My computer has no sound -->
+<topic name="KEYBPROBLEM">
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>CHECK YOUR CABLES IS YOUR KEYBOARD CONNECTED IN THE USB</that>
+		<template>
+			Have you tried restarting your computer?
+            <think><set name="topic">KEYBPROBLEM</set></think>			
+		</template>
+	</category> 
+
+	<category>
+		<pattern>NO</pattern>
+		<that>HAVE YOU TRIED RESTARTING YOUR COMPUTER</that>
+		<template>
+			Try it, maybe it will fix it!			
+		</template>
+	</category> 
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>HAVE YOU TRIED RESTARTING YOUR COMPUTER</that>
+		<template>
+			Check your manufacturers website for troubleshooting and try reinstalling the drivers.			
+		</template>
+	</category> 
+	
+	<category>
+		<pattern>NO</pattern>
+		<that>CHECK YOUR CABLES IS YOUR KEYBOARD CONNECTED IN THE USB</that>
+		<template>
+		     There's your problem, connect it!		
+		</template>
+	</category> 
+</topic>
+
+<topic name="MOUSEPROBLEM">
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>CHECK YOUR CABLES IS YOUR MOUSE CONNECTED IN THE USB</that>
+		<template>
+			Have you tried restarting your computer?
+            <think><set name="topic">MOUSEPROBLEM</set></think>			
+		</template>
+	</category> 
+
+	<category>
+		<pattern>NO</pattern>
+		<that>HAVE YOU TRIED RESTARTING YOUR COMPUTER</that>
+		<template>
+			Try it, maybe it will fix it!			
+		</template>
+	</category> 
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>HAVE YOU TRIED RESTARTING YOUR COMPUTER</that>
+		<template>
+			Check your manufacturers website for troubleshooting and try reinstalling the drivers.			
+		</template>
+	</category> 
+	
+	<category>
+		<pattern>NO</pattern>
+		<that>CHECK YOUR CABLES IS YOUR MOUSE CONNECTED IN THE USB</that>
+		<template>
+		     There's your problem, connect it!		
+		</template>
+	</category> 
+</topic>
+
+
+
+<topic name="PRINTERPROBLEM">
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>CHECK YOUR CABLES IS YOUR PRINTER CONNECTED IN THE USB</that>
+		<template>
+			Is there sufficient ink in the printer?
+            <think><set name="topic">PRINTERPROBLEM</set></think>			
+		</template>
+	</category> 
+
+	<category>
+		<pattern>NO</pattern>
+		<that>IS THERE SUFFICIENT INK IN THE PRINTER</that>
+		<template>
+			You need to buy more ink for it to work!			
+		</template>
+	</category> 
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>IS THERE SUFFICIENT INK IN THE PRINTER</that>
+		<template>
+			Check your manufacturers website for troubleshooting and try reinstalling the drivers.			
+		</template>
+	</category> 
+	
+	<category>
+		<pattern>NO</pattern>
+		<that>CHECK YOUR CABLES IS YOUR PRINTER CONNECTED IN THE USB</that>
+		<template>
+		     There's your problem, connect it!		
+		</template>
+	</category> 
+</topic>
+
+
+<topic name="SCREEN SCRAMBLED">
+<category>
+	<pattern>*</pattern>
+	<template>
+	Check your cables, are they properly connected? 
+	<think><set name="topic">SCREENSCRAMBLEPROBLEM</set></think>
+	</template>
+</category>
+</topic>
+
+<topic name="SCREENSCRAMBLEPROBLEM">
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>CHECK YOUR CABLES ARE THEY PROPERLY CONNECTED</that>
+		<template>
+			Check your display driver settings, are they ok? 
+            <think><set name="topic">SCREENSCRAMBLEPROBLEM</set></think>			
+		</template>
+	</category> 
+
+	<category>
+		<pattern>NO</pattern>
+		<that>CHECK YOUR CABLES ARE THEY PROPERLY CONNECTED</that>
+		<template>
+			Fix them, it should solve the problem. 
+        </template>
+	</category> 
+
+	<category>
+		<pattern>NO</pattern>
+		<that>CHECK YOUR DISPLAY DRIVER SETTINGS ARE THEY OK</that>
+		<template>
+			There's your problem, change the settings!			
+		</template>
+	</category> 
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>CHECK YOUR DISPLAY DRIVER SETTINGS ARE THEY OK</that>
+		<template>
+				It could be a video card problem, try updating your video card drivers!			
+		</template>
+	</category> 
+</topic>
+
+<topic name="SCREENBLANKPROBLEM">
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>CHECK YOUR CABLES ARE THEY PROPERLY CONNECTED</that>
+		<template>
+			Check your display driver settings, are they ok? 
+            <think><set name="topic">SCREENBLANKPROBLEM</set></think>			
+		</template>
+	</category> 
+	
+	<category>
+		<pattern>NO</pattern>
+		<that>CHECK YOUR CABLES ARE THEY PROPERLY CONNECTED</that>
+		<template>
+			Fix them, it should solve the problem. 
+        </template>
+	</category> 
+
+	<category>
+		<pattern>NO</pattern>
+		<that>CHECK YOUR DISPLAY DRIVER SETTINGS ARE THEY OK</that>
+		<template>
+			There's your problem, change the settings!			
+		</template>
+	</category> 
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>CHECK YOUR DISPLAY DRIVER SETTINGS ARE THEY OK</that>
+		<template>
+			It could be a video card problem, try updating your video card drivers!			
+		</template>
+	</category> 
+</topic>
+
+
+
+<topic name="INTERNETPROBLEM">
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>CHECK YOUR CABLES ARE THEY PROPERLY CONNECTED</that>
+		<template>
+			Check your network settings are they OK? 
+            <think><set name="topic">INTERNETPROBLEM</set></think>			
+		</template>
+	</category> 
+
+	<category>
+		<pattern>NO</pattern>
+		<that>CHECK YOUR CABLES ARE THEY PROPERLY CONNECTED</that>
+		<template>
+			Fix them, it should solve the problem. 
+        </template>
+	</category> 
+
+	<category>
+		<pattern>NO</pattern>
+		<that>CHECK YOUR NETWORK SETTINGS ARE THEY OK</that>
+		<template>
+			There's your problem, fix the settings!			
+		</template>
+	</category> 
+	
+	<category>
+		<pattern>YES</pattern>
+		<that>CHECK YOUR NETWORK SETTINGS ARE THEY OK</that>
+		<template>
+			Try restarting your router, if that does not work then contact your ISP!			
+		</template>
+	</category> 
+</topic>
 </aiml>
+	

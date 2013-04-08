@@ -1,7 +1,7 @@
 <aiml>
-<topic name="TRAININGHAUXIR">
+<topic name="TRAININGBEGGI">
 <category>
-<pattern>BLESSADUR MEANS *</pattern>
+<pattern>MY BROWSER CANT LOAD ANY WEBSITES MEANS *</pattern>
 <template>
 <star/>
 </template>

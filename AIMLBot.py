@@ -50,6 +50,18 @@ class AIMLBot:
 
     # Initialise the Bayes parser
     self.bayes = AIMLBayes(name)
+    self.bayes.train("computer is broken","computer is broken")
+    self.bayes.train("computer freezes","computer freezes")
+    self.bayes.train("computer wont start","computer wont start")
+    self.bayes.train("bluescreen","bluescreen")
+    self.bayes.train("nosound","nosound")
+    self.bayes.train("novideo","novideo")
+    self.bayes.train("keyboard","keyboard")
+    self.bayes.train("printer","printer")
+    self.bayes.train("screen scrambled","screen scrambled")
+    self.bayes.train("screen blank","screen blank")
+    self.bayes.train("internet broken","internet broken")
+      
 
   def do_RESPONSE(self,sn,reply):
     """
@@ -252,7 +264,7 @@ class AIMLBot:
         self.do_RESPONSE(sn,"Sorry, that didn't work")
       # Reset the various training flags
       self.kernel.setPredicate("topic","",sn)
-      self.kernel.setPredicate("handler","",sn)
+      self	.kernel.setPredicate("handler","",sn)
 
   def on_UNKNOWN(self,sn,line):
     """
